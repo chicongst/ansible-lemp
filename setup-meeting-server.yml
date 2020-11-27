@@ -1,0 +1,24 @@
+---
+
+- hosts: meeting_hosts
+  remote_user: "{{ user }}"
+
+  vars_files:
+    - vars/main.yml
+    - vars/meeting.yml
+
+  roles:
+    - name: essentials
+      tags: essentials
+
+    - name: php
+      tags: php
+      become: true
+
+    - name: nginx
+      tags: nginx
+      become: true
+
+    - name: mysql
+      tags: mysql
+      become: true
